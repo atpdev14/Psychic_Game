@@ -21,9 +21,17 @@
 	<div id="gameContent">
 		<script>
 		// ================================================================
-		// Initialize Variables	
+		//Function Generates a random letter
+		function randomLetter() {
+			var randChar = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+			return randChar;
+		}
+
+
+		// Initialize Variables
+		var winningAnswer = randomLetter();
+        console.log("The correct answer is " + winningAnswer);	
 		var wrongGuesses = [];
-		var winningAnswer = "p"; //learn to randomize this later
 		var winCounter = 0;
 		var winSpan = document.getElementById("winSpan");
 		var wrongGuessSpan = document.getElementById("wrongGuessSpan");
@@ -42,7 +50,11 @@
        		 // If you guess correctly the winCounter increments by 1 and updates that value to the winSpan.
        		 if (yourGuess === winningAnswer) {
        		 	winCounter = winCounter + 1;
+       		 	wrongGuesses = [];
+       		 	wrongGuessSpan.textContent = wrongGuesses;
        		 	winSpan.textContent = winCounter;
+       		 	winningAnswer = randomLetter();
+       		 	console.log("The correct answer is " + winningAnswer);
        		 }
 
        		
