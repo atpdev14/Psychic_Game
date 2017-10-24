@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Psychic Game</title>
+</head>
+	<h1>Psychic Game</h1>
+	<h2>What Letter am I thinking of?</h2>
+
+	<div id="textPrompts">
+		<ul>
+			<!-- ================================================
+			Set up html text and create spans to display value of JS variables -->
+			<li>Your Guess: <span id="yourGuessSpan"></span></li>
+			<li>Wins: <span id="winSpan"></span> </li>
+			<li>Wrong Guesses: <span id="wrongGuessSpan"></span> </li>
+
+		</ul>
+	</div>
+	
+	<div id="gameContent">
+		<script>
+		// ================================================================
+		// Initialize Variables	
+		var wrongGuesses = [];
+		var winningAnswer = "p"; //learn to randomize this later
+		var winCounter = 0;
+		var winSpan = document.getElementById("winSpan");
+		var wrongGuessSpan = document.getElementById("wrongGuessSpan");
+		var yourGuessSpan = document.getElementById("yourGuessSpan");
+
+		// ================================================================
+		// Set the value of yourGuess variable equal to the key the user pressed on the release of key and update the value in the html field
+		document.onkeyup = function(event) {
+        	yourGuess = event.key;
+        	console.log(yourGuess);
+        	yourGuessSpan.textContent = yourGuess;
+        	//===================================
+       		 //Add all code you want executed here
+
+       		 
+       		 // If you guess correctly the winCounter increments by 1 and updates that value to the winSpan.
+       		 if (yourGuess === winningAnswer) {
+       		 	winCounter = winCounter + 1;
+       		 	winSpan.textContent = winCounter;
+       		 }
+
+       		
+       		 // If you guess wrong, the value of your wrong guess is pushed into an array and that array is printed in the span with the id wrongGuessSpan
+       		 else {
+       		 	wrongGuesses.push(yourGuess);
+       		 	console.log(wrongGuesses); 
+       		 	wrongGuessSpan.textContent = wrongGuesses;
+       		 }
+      };
+		</script>
+	</div>
+
+
+<body>
+
+</body>
+</html>
+
+
+
+
+<!-- find out how to randomize a letter and assign it to the variable winningAnswer -->
